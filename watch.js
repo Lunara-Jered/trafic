@@ -26,32 +26,11 @@ function renderPlayer() {
 
     <h1 class="watch-title">${v.title}</h1>
 
-    <div class="watch-meta-row">
-      <div class="watch-channel-block">
-        <div class="channel-avatar">${v.channel.substring(0,2).toUpperCase()}</div>
-        <div class="channel-info">
-          <div class="channel-name">
-            ${v.channel} <i class="fa-solid fa-circle-check"></i>
-          </div>
-          <div class="channel-subs">125K abonnés</div>
-        </div>
-        <button class="subscribe-btn" id="subscribeBtn">S'abonner</button>
-      </div>
-
-      <div class="watch-actions">
-        <button class="action-btn" id="likeBtn">
-          <i class="fa-regular fa-thumbs-up"></i> J'aime
-        </button>
-        <button class="action-btn">
-          <i class="fa-solid fa-share"></i> Partager
-        </button>
-        <button class="action-btn">
-          <i class="fa-solid fa-download"></i> Télécharger
-        </button>
-        <button class="action-btn">
-          <i class="fa-solid fa-ellipsis"></i>
-        </button>
-      </div>
+    <!-- Seul le bouton Partager reste entre le titre et la description -->
+    <div class="watch-actions-simple">
+      <button class="action-btn" id="shareBtn">
+        <i class="fa-solid fa-share"></i> Partager
+      </button>
     </div>
 
     <div class="watch-description">
@@ -67,37 +46,31 @@ function renderPlayer() {
     </div>
   `;
 
-  // Interactions simples
-  const likeBtn = document.getElementById('likeBtn');
-  likeBtn.addEventListener('click', () => {
-    likeBtn.classList.toggle('active');
-    const icon = likeBtn.querySelector('i');
-    if (likeBtn.classList.contains('active')) {
-      icon.className = 'fa-solid fa-thumbs-up';
-      likeBtn.style.color = '#3d9a3d';
-    } else {
-      icon.className = 'fa-regular fa-thumbs-up';
-      likeBtn.style.color = '';
-    }
-  });
-
-  const subscribeBtn = document.getElementById('subscribeBtn');
-  subscribeBtn.addEventListener('click', () => {
-    if (subscribeBtn.textContent === "S'abonner") {
-      subscribeBtn.textContent = 'Abonné ✓';
-      subscribeBtn.style.background = '#e5e5e5';
-      subscribeBtn.style.color = '#0f0f0f';
-    } else {
-      subscribeBtn.textContent = "S'abonner";
-      subscribeBtn.style.background = '';
-      subscribeBtn.style.color = '';
+  // Partage (Web Share API si dispo, sinon copie du lien)
+  const shareBtn = document.getElementById('shareBtn');
+  shareBtn.addEventListener('click', async () => {
+    const shareData = {
+      title: v.title,
+      text: v.description,
+      url: window.location.href
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        const original = shareBtn.innerHTML;
+        shareBtn.innerHTML = '<i class="fa-solid fa-check"></i> Lien copié !';
+        setTimeout(() => { shareBtn.innerHTML = original; }, 2000);
+      }
+    } catch (err) {
+      console.log('Partage annulé ou erreur', err);
     }
   });
 }
 
 // ===== RENDER LES SUGGESTIONS =====
 function renderSuggestions() {
-  // Mélange : même catégorie d'abord, puis les autres
   const sameCat = contents.filter(c => c.id !== currentVideo.id && c.cat === currentVideo.cat);
   const otherCat = contents.filter(c => c.id !== currentVideo.id && c.cat !== currentVideo.cat);
   const suggestions = [...sameCat, ...otherCat];
@@ -109,7 +82,6 @@ function renderSuggestions() {
       </div>
       <div class="suggestion-info">
         <div class="suggestion-title">${c.title}</div>
-        <div class="suggestion-channel">${c.channel}</div>
         <div class="suggestion-meta">${c.views} • ${c.time}</div>
       </div>
     </div>
@@ -133,12 +105,10 @@ menuBtn.addEventListener('click', () => {
   }
 });
 
-// ===== METTRE À JOUR LE TITRE DE LA PAGE =====
+// ===== TITRE DE LA PAGE =====
 document.title = `${currentVideo.title} - Gabon Nature`;
 
 // ===== INIT =====
 renderPlayer();
 renderSuggestions();
-
-// Scroll en haut au chargement
 window.scrollTo(0, 0);
