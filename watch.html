@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lecture - Gabon Nature</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-left">
+      <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+      <a href="index.html" class="logo">
+        <span class="logo-icon"><i class="fa-solid fa-leaf"></i></span>
+        <span class="logo-text">Gabon<span>Nature</span></span>
+      </a>
+    </div>
+    <div class="header-center">
+      <input type="text" class="search-bar" placeholder="Rechercher..." id="searchInput">
+      <button class="search-btn" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn"><i class="fa-regular fa-bell"></i></button>
+      <div class="avatar">GN</div>
+    </div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <nav>
+      <a href="index.html" class="side-link"><i class="fa-solid fa-house"></i> Accueil</a>
+      <a href="index.html" class="side-link" data-cat="faune"><i class="fa-solid fa-paw"></i> Faune</a>
+      <a href="index.html" class="side-link" data-cat="flore"><i class="fa-solid fa-tree"></i> Flore</a>
+      <a href="index.html" class="side-link" data-cat="histoire"><i class="fa-solid fa-scroll"></i> Histoire</a>
+      <a href="index.html" class="side-link" data-cat="geo"><i class="fa-solid fa-map"></i> Géographie</a>
+      <hr>
+      <a href="#" class="side-link"><i class="fa-solid fa-heart"></i> Favoris</a>
+      <a href="#" class="side-link"><i class="fa-solid fa-list"></i> Playlists</a>
+    </nav>
+  </aside>
+
+  <!-- LAYOUT DE LA PAGE WATCH -->
+  <main class="watch-main" id="watchMain">
+    <div class="watch-layout">
+      
+      <!-- COLONNE GAUCHE : lecteur + infos -->
+      <div class="watch-primary" id="watchPrimary">
+        <!-- Contenu injecté par watch.js -->
+      </div>
+
+      <!-- COLONNE DROITE : suggestions -->
+      <aside class="watch-secondary">
+        <h3 class="suggestions-title">Suggestions</h3>
+        <div class="suggestions-list" id="suggestionsList"></div>
+      </aside>
+
+    </div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="watch.js"></script>
+</body>
+</html>
