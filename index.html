@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabon Nature - Découvrez la beauté du Gabon</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- HEADER style YouTube -->
+  <header class="header">
+    <div class="header-left">
+      <button class="menu-btn" id="menuBtn">☰</button>
+      <a href="#" class="logo">
+        <span class="logo-icon">🌿</span>
+        <span class="logo-text">Gabon<span>Nature</span></span>
+      </a>
+    </div>
+    <div class="header-center">
+      <input type="text" class="search-bar" placeholder="Rechercher (faune, flore, histoire...)" id="searchInput">
+      <button class="search-btn" id="searchBtn">🔍</button>
+    </div>
+    <div class="header-right">
+      <button class="icon-btn">🔔</button>
+      <div class="avatar">GN</div>
+    </div>
+  </header>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <nav>
+      <a href="#" class="side-link active" data-cat="all">🏠 Accueil</a>
+      <a href="#" class="side-link" data-cat="faune">🐘 Faune</a>
+      <a href="#" class="side-link" data-cat="flore">🌳 Flore</a>
+      <a href="#" class="side-link" data-cat="histoire">📜 Histoire</a>
+      <a href="#" class="side-link" data-cat="geo">🗺️ Géographie</a>
+      <hr>
+      <a href="#" class="side-link">❤️ Favoris</a>
+      <a href="#" class="side-link">📺 Playlists</a>
+    </nav>
+  </aside>
+
+  <!-- CONTENU PRINCIPAL -->
+  <main class="main-content" id="mainContent">
+    
+    <!-- BANNIÈRE -->
+    <section class="banner">
+      <h1>Découvrez la Nature du Gabon 🇬🇦</h1>
+      <p>Un pays au cœur de la biodiversité africaine</p>
+    </section>
+
+    <!-- FILTRES -->
+    <section class="categories">
+      <button class="cat-btn active" data-cat="all">Tout</button>
+      <button class="cat-btn" data-cat="faune">Faune</button>
+      <button class="cat-btn" data-cat="flore">Flore</button>
+      <button class="cat-btn" data-cat="histoire">Histoire</button>
+      <button class="cat-btn" data-cat="geo">Géographie</button>
+    </section>
+
+    <!-- GRILLE DE VIDÉOS/CARDS -->
+    <section class="video-grid" id="videoGrid">
+      <!-- Les cartes seront injectées par JS -->
+    </section>
+
+  </main>
+
+  <!-- MODAL DÉTAIL -->
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
