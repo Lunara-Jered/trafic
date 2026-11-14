@@ -10,11 +10,10 @@
 </head>
 <body>
 
-  <!-- HEADER style YouTube -->
   <header class="header">
     <div class="header-left">
       <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-      <a href="#" class="logo">
+      <a href="index.html" class="logo">
         <span class="logo-icon"><i class="fa-solid fa-leaf"></i></span>
         <span class="logo-text">Gabon<span>Nature</span></span>
       </a>
@@ -29,10 +28,9 @@
     </div>
   </header>
 
-  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <nav>
-      <a href="#" class="side-link active" data-cat="all"><i class="fa-solid fa-house"></i> Accueil</a>
+      <a href="index.html" class="side-link active" data-cat="all"><i class="fa-solid fa-house"></i> Accueil</a>
       <a href="#" class="side-link" data-cat="faune"><i class="fa-solid fa-paw"></i> Faune</a>
       <a href="#" class="side-link" data-cat="flore"><i class="fa-solid fa-tree"></i> Flore</a>
       <a href="#" class="side-link" data-cat="histoire"><i class="fa-solid fa-scroll"></i> Histoire</a>
@@ -43,16 +41,12 @@
     </nav>
   </aside>
 
-  <!-- CONTENU PRINCIPAL -->
   <main class="main-content" id="mainContent">
-    
-    <!-- BANNIÈRE -->
     <section class="banner">
       <h1><i class="fa-solid fa-globe"></i> Découvrez la Nature du Gabon</h1>
       <p>Un pays au cœur de la biodiversité africaine</p>
     </section>
 
-    <!-- FILTRES -->
     <section class="categories">
       <button class="cat-btn active" data-cat="all">Tout</button>
       <button class="cat-btn" data-cat="faune">Faune</button>
@@ -61,19 +55,10 @@
       <button class="cat-btn" data-cat="geo">Géographie</button>
     </section>
 
-    <!-- GRILLE DE VIDÉOS/CARDS -->
     <section class="video-grid" id="videoGrid"></section>
-
   </main>
 
-  <!-- MODAL DÉTAIL -->
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
-      <div class="modal-body" id="modalBody"></div>
-    </div>
-  </div>
-
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
