@@ -45,7 +45,6 @@ function renderCards() {
           <i class="fa-solid ${catIcons[c.cat]}"></i> ${catLabels[c.cat]}
         </span>
         <div class="video-title">${c.title}</div>
-        <div class="video-channel"><i class="fa-solid fa-circle-check"></i> ${c.channel}</div>
         <div class="video-meta">${c.views} • ${c.time}</div>
       </div>
     </div>
