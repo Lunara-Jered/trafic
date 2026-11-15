@@ -26,7 +26,6 @@ function renderPlayer() {
 
     <h1 class="watch-title">${v.title}</h1>
 
-    <!-- Seul le bouton Partager -->
     <div class="watch-actions-simple">
       <button class="action-btn" id="shareBtn">
         <i class="fa-solid fa-share"></i> Partager
@@ -46,7 +45,6 @@ function renderPlayer() {
     </div>
   `;
 
-  // Partage
   const shareBtn = document.getElementById('shareBtn');
   shareBtn.addEventListener('click', async () => {
     const shareData = {
@@ -82,6 +80,7 @@ function renderSuggestions() {
       </div>
       <div class="suggestion-info">
         <div class="suggestion-title">${c.title}</div>
+        <div class="suggestion-channel">${c.channel}</div>
         <div class="suggestion-meta">${c.views} • ${c.time}</div>
       </div>
     </div>
@@ -105,7 +104,7 @@ menuBtn.addEventListener('click', () => {
   }
 });
 
-// ===== TITRE DE LA PAGE =====
+// ===== TITRE =====
 document.title = `${currentVideo.title} - Gabon Nature`;
 
 // ===== INIT =====
