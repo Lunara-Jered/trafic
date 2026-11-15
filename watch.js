@@ -26,7 +26,7 @@ function renderPlayer() {
 
     <h1 class="watch-title">${v.title}</h1>
 
-    <!-- Seul le bouton Partager reste entre le titre et la description -->
+    <!-- Seul le bouton Partager -->
     <div class="watch-actions-simple">
       <button class="action-btn" id="shareBtn">
         <i class="fa-solid fa-share"></i> Partager
@@ -46,7 +46,7 @@ function renderPlayer() {
     </div>
   `;
 
-  // Partage (Web Share API si dispo, sinon copie du lien)
+  // Partage
   const shareBtn = document.getElementById('shareBtn');
   shareBtn.addEventListener('click', async () => {
     const shareData = {
