@@ -168,3 +168,17 @@ const contents = [
     tags: ['Climat équatorial', 'Conservation', 'Menaces', 'Indice forestier']
   }
 ];
+// ===== HELPERS PARTAGÉS =====
+const catIcons = {
+  faune: 'fa-paw',
+  flore: 'fa-tree',
+  histoire: 'fa-scroll',
+  geo: 'fa-map'
+};
+
+const catLabels = {
+  faune: 'Faune',
+  flore: 'Flore',
+  histoire: 'Histoire',
+  geo: 'Géographie'
+};
