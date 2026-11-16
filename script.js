@@ -4,11 +4,11 @@ window.addEventListener('DOMContentLoaded', () => {
   // Sécurité : data.js chargé ?
   if (typeof contents === 'undefined') {
     const grid = document.getElementById('videoGrid');
-    if (grid) grid.innerHTML = '<p style="padding:40px;color:red;">⚠️ Données non chargées</p>';
+    if (grid) grid.innerHTML = '<p style="padding:40px;color:red;"> Données non chargées</p>';
     return;
   }
 
-  // Icônes & labels en dur (ne dépend pas de data.js)
+  // Icônes & labels en dur
   const catIcons = {
     faune: 'fa-paw',
     flore: 'fa-tree',
@@ -34,9 +34,15 @@ window.addEventListener('DOMContentLoaded', () => {
   const mobileSearchInput = document.getElementById('mobileSearchInput');
   const mobileSearchClose = document.getElementById('mobileSearchClose');
 
-  // ===== ÉTAT =====
+  // ===== ÉTAT (DÉCLARÉ AVANT TOUTE UTILISATION) =====
   let currentFilter = 'all';
   let currentSearch = '';
+
+  // Lire le paramètre ?cat= dans l'URL (venant de watch.html)
+  const urlCat = new URLSearchParams(window.location.search).get('cat');
+  if (urlCat && ['all', 'faune', 'flore', 'histoire', 'geo'].includes(urlCat)) {
+    currentFilter = urlCat;
+  }
 
   // ===== SYNC DES FILTRES =====
   function syncFilter(cat) {
@@ -150,6 +156,7 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ===== INIT =====
+  // ===== INIT (UNE SEULE FOIS, À LA FIN) =====
+  syncFilter(currentFilter);   // ✅ applique l'état actif (venant de ?cat= ou par défaut)
   renderCards();
 });
