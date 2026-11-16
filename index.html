@@ -2,7 +2,8 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#3d9a3d">
   <title>Gabon Nature - Découvrez la beauté du Gabon</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -10,21 +11,31 @@
 </head>
 <body>
 
+  <!-- HEADER sticky style Facebook -->
   <header class="header">
     <div class="header-left">
-      <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
       <a href="index.html" class="logo">
         <span class="logo-icon"><i class="fa-solid fa-leaf"></i></span>
         <span class="logo-text">Gabon<span>Nature</span></span>
       </a>
     </div>
     <div class="header-center">
-      <input type="text" class="search-bar" placeholder="Rechercher (faune, flore, histoire...)" id="searchInput">
+      <input type="text" class="search-bar" placeholder="Rechercher..." id="searchInput">
       <button class="search-btn" id="searchBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
-    
+    <div class="header-right">
+      <button class="icon-btn mobile-search-toggle" id="mobileSearchToggle"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div class="avatar">GN</div>
+    </div>
   </header>
 
+  <!-- Barre de recherche mobile (cachée par défaut) -->
+  <div class="mobile-search-bar" id="mobileSearchBar">
+    <input type="text" placeholder="Rechercher faune, flore, histoire..." id="mobileSearchInput">
+    <button id="mobileSearchClose"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <!-- SIDEBAR (desktop uniquement) -->
   <aside class="sidebar" id="sidebar">
     <nav>
       <a href="index.html" class="side-link active" data-cat="all"><i class="fa-solid fa-house"></i> Accueil</a>
@@ -32,17 +43,22 @@
       <a href="#" class="side-link" data-cat="flore"><i class="fa-solid fa-tree"></i> Flore</a>
       <a href="#" class="side-link" data-cat="histoire"><i class="fa-solid fa-scroll"></i> Histoire</a>
       <a href="#" class="side-link" data-cat="geo"><i class="fa-solid fa-map"></i> Géographie</a>
-      <hr>
     </nav>
   </aside>
 
+  <!-- CONTENU PRINCIPAL -->
   <main class="main-content" id="mainContent">
+    
+    <!-- Bannière avec image de fond -->
     <section class="banner">
-      <h1><i class="fa-solid fa-globe"></i> Découvrez la Nature du Gabon</h1>
-      <p>Un pays au cœur de la biodiversité africaine</p>
+      <div class="banner-overlay">
+        <h1><i class="fa-solid fa-globe"></i> Découvrez la Nature du Gabon</h1>
+        <p>Un pays au cœur de la biodiversité africaine</p>
+      </div>
     </section>
 
-    <section class="categories">
+    <!-- Filtres catégories -->
+    <section class="categories" id="categories">
       <button class="cat-btn active" data-cat="all">Tout</button>
       <button class="cat-btn" data-cat="faune">Faune</button>
       <button class="cat-btn" data-cat="flore">Flore</button>
@@ -50,8 +66,34 @@
       <button class="cat-btn" data-cat="geo">Géographie</button>
     </section>
 
+    <!-- Grille vidéos -->
     <section class="video-grid" id="videoGrid"></section>
+
   </main>
+
+  <!-- BARRE DE NAVIGATION BASSE (mobile uniquement, style Facebook) -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="mobile-nav-item active" data-cat="all">
+      <i class="fa-solid fa-house"></i>
+      <span>Accueil</span>
+    </a>
+    <a href="#" class="mobile-nav-item" data-cat="faune">
+      <i class="fa-solid fa-paw"></i>
+      <span>Faune</span>
+    </a>
+    <a href="#" class="mobile-nav-item" data-cat="flore">
+      <i class="fa-solid fa-tree"></i>
+      <span>Flore</span>
+    </a>
+    <a href="#" class="mobile-nav-item" data-cat="histoire">
+      <i class="fa-solid fa-scroll"></i>
+      <span>Histoire</span>
+    </a>
+    <a href="#" class="mobile-nav-item" data-cat="geo">
+      <i class="fa-solid fa-map"></i>
+      <span>Géo</span>
+    </a>
+  </nav>
 
   <script src="data.js"></script>
   <script src="script.js"></script>
