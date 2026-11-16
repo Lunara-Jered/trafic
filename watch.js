@@ -1,14 +1,24 @@
 // ===== RÉFÉRENCES DOM =====
 const watchPrimary = document.getElementById('watchPrimary');
 const suggestionsList = document.getElementById('suggestionsList');
-const menuBtn = document.getElementById('menuBtn');
-const sidebar = document.getElementById('sidebar');
-const watchMain = document.getElementById('watchMain');
+const backBtn = document.getElementById('backBtn');
 
 // ===== RÉCUPÉRER L'ID DEPUIS L'URL =====
 const params = new URLSearchParams(window.location.search);
 const videoId = parseInt(params.get('id')) || contents[0].id;
 const currentVideo = contents.find(c => c.id === videoId) || contents[0];
+
+// ===== BOUTON RETOUR =====
+if (backBtn) {
+  backBtn.addEventListener('click', () => {
+    // Si l'utilisateur vient d'une page du site, il y retourne
+    if (document.referrer && document.referrer.includes(window.location.hostname)) {
+      window.history.back();
+    } else {
+      window.location.href = 'index.html';
+    }
+  });
+}
 
 // ===== RENDER LE LECTEUR + INFOS =====
 function renderPlayer() {
@@ -62,7 +72,7 @@ function renderPlayer() {
         setTimeout(() => { shareBtn.innerHTML = original; }, 2000);
       }
     } catch (err) {
-      console.log('Partage annulé ou erreur', err);
+      // silencieux : l'utilisateur a annulé
     }
   });
 }
@@ -92,17 +102,6 @@ function renderSuggestions() {
     });
   });
 }
-
-// ===== MENU MOBILE =====
-menuBtn.addEventListener('click', () => {
-  if (window.innerWidth < 900) {
-    sidebar.classList.toggle('open');
-    watchMain.classList.toggle('full');
-  } else {
-    sidebar.classList.toggle('hidden');
-    watchMain.classList.toggle('full');
-  }
-});
 
 // ===== TITRE =====
 document.title = `${currentVideo.title} - Gabon Nature`;
