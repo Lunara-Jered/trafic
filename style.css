@@ -736,3 +736,18 @@ body::after {
   .suggestion-title { font-size: 13px; }
   .suggestion-meta { font-size: 11px; }
 }
+
+/* Bouton retour (watch) */
+.back-btn { display: none; }
+
+@media (max-width: 900px) {
+  .back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* Cacher le logo texte sur très petits écrans (optionnel) */
+  @media (max-width: 380px) {
+    .back-btn + .logo .logo-text { display: none; }
+  }
+}
