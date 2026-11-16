@@ -383,7 +383,8 @@ body::after {
    RESPONSIVE — MOBILE STYLE FACEBOOK
    ============================================================ */
 @media (max-width: 900px) {
-  /* Header compact */
+
+  /* ---------- HEADER ---------- */
   .header {
     padding: 0 12px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.08);
@@ -394,71 +395,54 @@ body::after {
   .mobile-search-toggle { display: flex; align-items: center; }
   .avatar { width: 32px; height: 32px; font-size: 12px; }
 
-  /* Sidebar cachée sur mobile */
-  .sidebar { display: none; }
-
-  /* Main : plein écran, sans margin */
-  .main-content {
-    margin-left: 0;
-    padding: 12px;
-    padding-top: 68px; /* header height + spacing */
-    padding-bottom: 80px; /* espace pour la barre nav basse */
+  /* ---------- SIDEBAR : TOTALEMENT CACHÉE ---------- */
+  .sidebar {
+    display: none !important;
   }
 
-  /* Bannière plus petite, style "cover" Facebook */
+  /* ---------- MAIN : plein écran ---------- */
+  .main-content {
+    margin-left: 0 !important;
+    padding: 12px;
+    padding-top: 68px;
+    padding-bottom: 90px; /* espace pour la bottombar */
+  }
+
+  /* ---------- BANNIÈRE ---------- */
   .banner {
-    height: 180px;
+    height: 160px;
     border-radius: 0;
     margin: 0 -12px 12px;
     box-shadow: none;
   }
   .banner-overlay { border-radius: 0; }
-  .banner h1 { font-size: 20px; }
-  .banner p { font-size: 13px; }
+  .banner h1 { font-size: 18px; }
+  .banner p { font-size: 12px; }
 
-  /* Catégories sticky sous le header, comme les tabs Facebook */
+  /* ---------- CATÉGORIES : CACHÉES SUR MOBILE ---------- */
+  /* La navigation se fait uniquement via la bottombar */
   .categories {
-    position: sticky;
-    top: 56px;
-    background: rgba(240, 242, 245, 0.95);
-    backdrop-filter: blur(8px);
-    margin: 0 -12px 12px;
-    padding: 8px 12px;
-    z-index: 50;
-    border-bottom: 1px solid rgba(0,0,0,0.05);
-  }
-  .cat-btn {
-    padding: 7px 14px;
-    font-size: 13px;
-    background: #fff;
+    display: none !important;
   }
 
-  /* Grille en une colonne, cards pleine largeur */
+  /* ---------- GRILLE ---------- */
   .video-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
 
-  /* Card style Facebook : pleine largeur, plus compacte */
   .video-card {
     border-radius: 10px;
     box-shadow: 0 1px 2px rgba(0,0,0,0.08);
   }
   .video-card:hover { transform: none; }
 
-  .thumb {
-    height: 200px;
-  }
-
+  .thumb { height: 200px; }
   .video-info { padding: 10px 12px; }
-
-  .video-title {
-    font-size: 14px;
-    line-height: 1.4;
-  }
+  .video-title { font-size: 14px; line-height: 1.4; }
   .video-meta { font-size: 12px; }
 
-  /* Barre de navigation basse fixe */
+  /* ---------- BOTTOMBAR ---------- */
   .mobile-nav {
     display: flex;
     position: fixed;
@@ -485,25 +469,33 @@ body::after {
     border-radius: 8px;
     flex: 1;
     transition: all 0.15s;
+    -webkit-tap-highlight-color: transparent;
   }
   .mobile-nav-item i {
-    font-size: 18px;
+    font-size: 20px;
+    transition: transform 0.15s;
   }
   .mobile-nav-item.active {
     color: var(--primary);
   }
   .mobile-nav-item.active i {
-    color: var(--primary);
+    transform: scale(1.1);
   }
   .mobile-nav-item:active {
     background: #f2f2f2;
+  }
+
+  /* Animation de feedback tactile */
+  .mobile-nav-item:active i {
+    transform: scale(0.9);
   }
 }
 
 /* Petits mobiles */
 @media (max-width: 380px) {
   .mobile-nav-item span { font-size: 10px; }
-  .banner h1 { font-size: 18px; }
+  .mobile-nav-item i { font-size: 18px; }
+  .banner h1 { font-size: 16px; }
   .thumb { height: 170px; }
 }
 
