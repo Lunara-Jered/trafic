@@ -10,10 +10,10 @@
   --primary: #3d9a3d;
   --primary-dark: #2d742d;
   --bg: #f0f2f5;
-  --card-bg: #ffffff;
+  --card-bg: transparent;
   --text: #0f0f0f;
   --text-light: #606060;
-  --border: #e5e5e5;
+  --border: transparent;
 }
 
 /* ===== BACKGROUND IMAGE GLOBAL ===== */
@@ -25,23 +25,21 @@ body {
   position: relative;
 }
 
-/* Image de fond fixe derrière tout le contenu */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   background: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80') center/cover no-repeat;
-  opacity: 0.08;
+  opacity: 0.15;
   z-index: -2;
   pointer-events: none;
 }
 
-/* Voile léger par-dessus pour lisibilité */
 body::after {
   content: '';
   position: fixed;
   inset: 0;
-  background: rgba(240, 242, 245, 0.92);
+  background: rgba(240, 242, 245, 0.85);
   z-index: -1;
   pointer-events: none;
 }
@@ -56,9 +54,7 @@ body::after {
   align-items: center;
   justify-content: space-between;
   padding: 0 16px;
-  border-bottom: 1px solid var(--border);
   z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
 .header-left {
@@ -89,7 +85,7 @@ body::after {
 .search-bar {
   flex: 1;
   padding: 10px 16px;
-  border: 1px solid #ccc;
+  border: none;
   border-radius: 40px 0 0 40px;
   outline: none;
   font-size: 14px;
@@ -98,8 +94,7 @@ body::after {
 
 .search-btn {
   padding: 0 20px;
-  border: 1px solid #ccc;
-  border-left: none;
+  border: none;
   background: #f5f5f5;
   border-radius: 0 40px 40px 0;
   cursor: pointer;
@@ -136,10 +131,8 @@ body::after {
   font-size: 13px;
 }
 
-/* Icône recherche mobile cachée par défaut */
 .mobile-search-toggle { display: none; }
 
-/* Barre de recherche mobile */
 .mobile-search-bar {
   display: none;
   position: fixed;
@@ -148,7 +141,6 @@ body::after {
   right: 0;
   background: #fff;
   padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
   z-index: 99;
   gap: 8px;
   align-items: center;
@@ -157,7 +149,7 @@ body::after {
 .mobile-search-bar input {
   flex: 1;
   padding: 10px 14px;
-  border: 1px solid var(--border);
+  border: none;
   border-radius: 20px;
   font-size: 14px;
   outline: none;
@@ -180,10 +172,8 @@ body::after {
   bottom: 0;
   width: 240px;
   background: #fff;
-  border-right: 1px solid var(--border);
   padding: 12px 0;
   overflow-y: auto;
-  transition: transform 0.3s;
   z-index: 90;
 }
 
@@ -219,11 +209,9 @@ body::after {
 .banner {
   position: relative;
   height: 260px;
-  border-radius: 12px;
   margin-bottom: 24px;
   overflow: hidden;
   background: url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80') center/cover;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
 }
 
 .banner-overlay {
@@ -257,16 +245,16 @@ body::after {
 .cat-btn {
   padding: 8px 16px;
   border: none;
-  background: #fff;
+  background: #e4e6eb;
   border-radius: 20px;
   cursor: pointer;
   font-size: 14px;
   white-space: nowrap;
   font-weight: 500;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   transition: all 0.2s;
+  color: var(--text);
 }
-.cat-btn:hover { background: #f2f2f2; }
+.cat-btn:hover { background: #d8dadf; }
 .cat-btn.active {
   background: var(--primary);
   color: #fff;
@@ -281,17 +269,14 @@ body::after {
 }
 
 .video-card {
-  background: var(--card-bg);
-  border-radius: 12px;
+  background: transparent;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: transform 0.2s;
 }
 
 .video-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
 }
 
 .thumb {
@@ -300,6 +285,8 @@ body::after {
   background-size: cover;
   background-position: center;
   position: relative;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .thumb::after {
@@ -339,7 +326,7 @@ body::after {
   z-index: 3;
 }
 
-.video-info { padding: 12px; }
+.video-info { padding: 8px 4px; }
 
 .video-title {
   font-size: 15px;
@@ -376,133 +363,12 @@ body::after {
 .badge.histoire { background: #8b4513; }
 .badge.geo { background: #2874a6; }
 
-/* ===== BARRE DE NAVIGATION BASSE (mobile) ===== */
+/* ===== BOTTOMBAR ===== */
 .mobile-nav { display: none; }
 
 /* ============================================================
-   RESPONSIVE — MOBILE STYLE FACEBOOK
+   PAGE WATCH
    ============================================================ */
-@media (max-width: 900px) {
-
-  /* ---------- HEADER ---------- */
-  .header {
-    padding: 0 12px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  }
-  .logo { font-size: 17px; }
-  .logo-icon { font-size: 18px; }
-  .header-center { display: none; }
-  .mobile-search-toggle { display: flex; align-items: center; }
-  .avatar { width: 32px; height: 32px; font-size: 12px; }
-
-  /* ---------- SIDEBAR : TOTALEMENT CACHÉE ---------- */
-  .sidebar {
-    display: none !important;
-  }
-
-  /* ---------- MAIN : plein écran ---------- */
-  .main-content {
-    margin-left: 0 !important;
-    padding: 12px;
-    padding-top: 68px;
-    padding-bottom: 90px; /* espace pour la bottombar */
-  }
-
-  /* ---------- BANNIÈRE ---------- */
-  .banner {
-    height: 160px;
-    border-radius: 0;
-    margin: 0 -12px 12px;
-    box-shadow: none;
-  }
-  .banner-overlay { border-radius: 0; }
-  .banner h1 { font-size: 18px; }
-  .banner p { font-size: 12px; }
-
-  /* ---------- CATÉGORIES : CACHÉES SUR MOBILE ---------- */
-  /* La navigation se fait uniquement via la bottombar */
-  .categories {
-    display: none !important;
-  }
-
-  /* ---------- GRILLE ---------- */
-  .video-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .video-card {
-    border-radius: 10px;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
-  }
-  .video-card:hover { transform: none; }
-
-  .thumb { height: 200px; }
-  .video-info { padding: 10px 12px; }
-  .video-title { font-size: 14px; line-height: 1.4; }
-  .video-meta { font-size: 12px; }
-
-  /* ---------- BOTTOMBAR ---------- */
-  .mobile-nav {
-    display: flex;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #fff;
-    border-top: 1px solid var(--border);
-    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-    justify-content: space-around;
-    z-index: 100;
-    box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
-  }
-
-  .mobile-nav-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    color: var(--text-light);
-    text-decoration: none;
-    font-size: 11px;
-    padding: 6px 10px;
-    border-radius: 8px;
-    flex: 1;
-    transition: all 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .mobile-nav-item i {
-    font-size: 20px;
-    transition: transform 0.15s;
-  }
-  .mobile-nav-item.active {
-    color: var(--primary);
-  }
-  .mobile-nav-item.active i {
-    transform: scale(1.1);
-  }
-  .mobile-nav-item:active {
-    background: #f2f2f2;
-  }
-
-  /* Animation de feedback tactile */
-  .mobile-nav-item:active i {
-    transform: scale(0.9);
-  }
-}
-
-/* Petits mobiles */
-@media (max-width: 380px) {
-  .mobile-nav-item span { font-size: 10px; }
-  .mobile-nav-item i { font-size: 18px; }
-  .banner h1 { font-size: 16px; }
-  .thumb { height: 170px; }
-}
-
-/* ============================================================
-   PAGE WATCH — STYLES COMPLETS
-   ============================================================ */
-
 .watch-main {
   margin-top: 56px;
   margin-left: 240px;
@@ -519,17 +385,15 @@ body::after {
   margin: 0 auto;
 }
 
-/* ---------- Colonne gauche ---------- */
 .watch-primary { min-width: 0; }
 
 .player-wrapper {
   width: 100%;
   aspect-ratio: 16/9;
   background: #000;
-  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 16px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  border-radius: 8px;
 }
 
 .player-wrapper iframe {
@@ -553,7 +417,7 @@ body::after {
 }
 
 .action-btn {
-  background: #f2f2f2;
+  background: #e4e6eb;
   border: none;
   border-radius: 20px;
   padding: 8px 14px;
@@ -566,11 +430,11 @@ body::after {
   color: var(--text);
   transition: background 0.2s;
 }
-.action-btn:hover { background: #e5e5e5; }
+.action-btn:hover { background: #d8dadf; }
 
 .watch-description {
-  background: #f2f2f2;
-  border-radius: 12px;
+  background: rgba(228, 230, 235, 0.6);
+  border-radius: 8px;
   padding: 14px 16px;
   font-size: 14px;
   line-height: 1.6;
@@ -592,21 +456,21 @@ body::after {
 }
 
 .desc-tags .info-tag {
-  background: #fff;
+  background: rgba(255,255,255,0.8);
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 12px;
 }
 
 .info-tag {
-  background: #f2f2f2;
+  background: #e4e6eb;
   padding: 6px 12px;
   border-radius: 16px;
   font-size: 12px;
   color: #333;
 }
 
-/* ---------- Colonne droite : suggestions ---------- */
+/* Suggestions */
 .suggestions-title {
   font-size: 16px;
   font-weight: 500;
@@ -623,12 +487,12 @@ body::after {
   display: flex;
   gap: 8px;
   cursor: pointer;
-  border-radius: 8px;
   padding: 4px;
+  border-radius: 8px;
   transition: background 0.15s;
 }
 
-.suggestion-card:hover { background: #f2f2f2; }
+.suggestion-card:hover { background: rgba(228, 230, 235, 0.6); }
 
 .suggestion-thumb {
   width: 160px;
@@ -682,15 +546,99 @@ body::after {
   color: var(--text-light);
 }
 
-/* ---------- Responsive WATCH desktop intermédiaire ---------- */
+/* Bouton retour */
+.back-btn { display: none; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
 @media (max-width: 1100px) {
   .watch-layout { grid-template-columns: 1fr; }
   .watch-secondary { margin-top: 16px; }
   .suggestion-thumb { width: 140px; height: 80px; }
 }
 
-/* ---------- Responsive WATCH mobile ---------- */
 @media (max-width: 900px) {
+  .header {
+    padding: 0 12px;
+  }
+  .logo { font-size: 17px; }
+  .logo-icon { font-size: 18px; }
+  .header-center { display: none; }
+  .mobile-search-toggle { display: flex; align-items: center; }
+  .avatar { width: 32px; height: 32px; font-size: 12px; }
+
+  .back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sidebar { display: none !important; }
+
+  .main-content {
+    margin-left: 0 !important;
+    padding: 12px;
+    padding-top: 68px;
+    padding-bottom: 90px;
+  }
+
+  .banner {
+    height: 160px;
+    margin: 0 -12px 12px;
+  }
+  .banner h1 { font-size: 18px; }
+  .banner p { font-size: 12px; }
+
+  .categories { display: none !important; }
+
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .video-card:hover { transform: none; }
+
+  .thumb { height: 200px; }
+  .video-title { font-size: 14px; line-height: 1.4; }
+  .video-meta { font-size: 12px; }
+
+  /* BOTTOMBAR */
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+    justify-content: space-around;
+    z-index: 100;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 11px;
+    padding: 6px 10px;
+    border-radius: 8px;
+    flex: 1;
+    transition: all 0.15s;
+  }
+  .mobile-nav-item i {
+    font-size: 20px;
+    transition: transform 0.15s;
+  }
+  .mobile-nav-item.active { color: var(--primary); }
+  .mobile-nav-item.active i { transform: scale(1.1); }
+  .mobile-nav-item:active { background: #f2f2f2; }
+  .mobile-nav-item:active i { transform: scale(0.9); }
+
+  /* WATCH mobile */
   .watch-main {
     margin-left: 0 !important;
     padding: 12px;
@@ -701,53 +649,33 @@ body::after {
   .watch-layout { gap: 12px; }
 
   .player-wrapper {
-    border-radius: 10px;
     margin-bottom: 12px;
+    border-radius: 0;
+    margin-left: -12px;
+    margin-right: -12px;
   }
 
-  .watch-title {
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-
+  .watch-title { font-size: 16px; margin-bottom: 10px; }
   .watch-actions-simple { margin-bottom: 12px; }
-
-  .action-btn {
-    padding: 7px 12px;
-    font-size: 12px;
-  }
+  .action-btn { padding: 7px 12px; font-size: 12px; }
 
   .watch-description {
     padding: 12px 14px;
     font-size: 13px;
-    border-radius: 10px;
     margin-bottom: 16px;
   }
-
   .desc-meta { font-size: 12px; }
 
   .suggestions-title { font-size: 15px; }
-
-  .suggestion-thumb {
-    width: 130px;
-    height: 75px;
-  }
-
+  .suggestion-thumb { width: 130px; height: 75px; }
   .suggestion-title { font-size: 13px; }
   .suggestion-meta { font-size: 11px; }
 }
 
-/* Bouton retour (watch) */
-.back-btn { display: none; }
-
-@media (max-width: 900px) {
-  .back-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  /* Cacher le logo texte sur très petits écrans (optionnel) */
-  @media (max-width: 380px) {
-    .back-btn + .logo .logo-text { display: none; }
-  }
+@media (max-width: 380px) {
+  .mobile-nav-item span { font-size: 10px; }
+  .mobile-nav-item i { font-size: 18px; }
+  .banner h1 { font-size: 16px; }
+  .thumb { height: 170px; }
+  .back-btn + .logo .logo-text { display: none; }
 }
