@@ -11,7 +11,6 @@ const currentVideo = contents.find(c => c.id === videoId) || contents[0];
 // ===== BOUTON RETOUR =====
 if (backBtn) {
   backBtn.addEventListener('click', () => {
-    // Si l'utilisateur vient d'une page du site, il y retourne
     if (document.referrer && document.referrer.includes(window.location.hostname)) {
       window.history.back();
     } else {
@@ -72,7 +71,7 @@ function renderPlayer() {
         setTimeout(() => { shareBtn.innerHTML = original; }, 2000);
       }
     } catch (err) {
-      // silencieux : l'utilisateur a annulé
+      // silencieux
     }
   });
 }
@@ -104,7 +103,7 @@ function renderSuggestions() {
 }
 
 // ===== TITRE =====
-document.title = `${currentVideo.title} - Gabon Nature`;
+document.title = `${currentVideo.title} - Echosysteme`;
 
 // ===== INIT =====
 renderPlayer();
